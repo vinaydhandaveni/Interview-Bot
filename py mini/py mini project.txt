@@ -1,0 +1,59 @@
+#timer missing
+import speech_recognition as sr
+import pyttsx3 
+
+
+def record(name,qs) : 
+ import speech_recognition as sr
+ mic_name = sr.Microphone(device_index=1)
+ sample_rate = 48000
+ chunk_size = 2048
+ r = sr.Recognizer()
+ mic_list = sr.Microphone.list_microphone_names()
+ device_id=1
+ with sr.Microphone(device_index = device_id, sample_rate = sample_rate,chunk_size = chunk_size) as source:
+    r.adjust_for_ambient_noise(source)
+    audio = r.listen(source)      
+    try:
+        text = r.recognize_google(audio)
+        save(name,qs,text)
+    except sr.UnknownValueError:
+        print("Google Speech Recognition could not understand audio")
+      
+    except sr.RequestError as e:
+        print("Could not request results from Google  Speech Recognition service; {0}".format(e))
+
+
+def save(name,qsn,ans) :
+    fp=open(name,'a')
+    fp.write(qsn)
+    fp.write("\n")
+    fp.write(ans)
+    fp.write("\n")
+    fp.close()
+
+def aptitud(name):
+ fp = open("aptitude.txt",'r')
+ for item in fp :
+    print(item)
+    record(name,item)
+ fp.close()
+
+
+
+print("\n\t\t---------Interview Bot-----------\n\n")
+name  =  input("\nEnter your name : ")
+mobyl =  input("\nEnter your mobile number  : ")
+print("\nSelect the type of questions you want to select :")
+print("\n1. aptitude")
+choice=int(input("\nyour choice : "))
+if choice==1 :
+   aptitud(name)
+elif choice==2 :
+  pass
+elif choice==3 :
+  pass
+elif choice==4 :
+  pass
+else :
+  print("wrong input")

@@ -1,0 +1,6 @@
+what are you currently pursuing?
+what are your interests?
+List the different storage class specifiers in C?
+Name the different functions are used for dynamic memory allocation in C Program?
+What are the access modifiers in Java?
+Thanks for taking the interview and plz provide us your valuable feedback.
